@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Functions & Graphs (9 клас)</title>
+
+<style>
+:root{
+--bg:#f8fafc;
+--card:#ffffff;
+--text:#0f172a;
+--accent:#2563eb;
+--grad:linear-gradient(135deg,#2563eb,#7c3aed);
+}
+
+body.dark{
+--bg:#0f172a;
+--card:#1e293b;
+--text:#f1f5f9;
+--accent:#60a5fa;
+}
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:var(--bg);
+color:var(--text);
+transition:0.4s;
+}
+
+header{
+background:var(--grad);
+color:white;
+padding:40px 20px;
+text-align:center;
+}
+
+header h1{
+margin:0;
+font-size:32px;
+}
+
+.badge{
+display:inline-block;
+padding:6px 12px;
+border-radius:20px;
+background:white;
+color:#2563eb;
+font-weight:bold;
+margin-top:10px;
+}
+
+.container{
+max-width:1100px;
+margin:40px auto;
+padding:20px;
+}
+
+.section, .card{
+background:var(--card);
+padding:20px;
+border-radius:18px;
+margin-bottom:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.section:hover, .card:hover{
+transform:translateY(-5px);
+}
+
+button{
+background:var(--accent);
+border:none;
+color:white;
+padding:10px 16px;
+border-radius:10px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{opacity:0.85;}
+
+.hidden{display:none;}
+
+.progress{
+height:10px;
+background:#cbd5e1;
+border-radius:8px;
+margin-bottom:25px;
+overflow:hidden;
+}
+
+.bar, .progress-bar{
+height:100%;
+width:0%;
+background:var(--accent);
+transition:0.4s;
+}
+
+.tabs{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+.tab-btn{
+flex:1;
+}
+.active-tab{
+background:#22c55e !important;
+}
+
+.toggle-theme{
+position:fixed;
+top:15px;
+right:15px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+td,th{
+border:1px solid #ccc;
+padding:8px;
+}
+td:hover{
+background:rgba(79,70,229,0.1);
+cursor:pointer;
+}
+
+.code-box{
+background:#0f172a;
+color:#22d3ee;
+padding:15px;
+border-radius:10px;
+font-family:monospace;
+overflow:auto;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+</style>
+</head>
+
+<body>
+
+<button class="toggle-theme" onclick="toggleTheme()">🌙</button>
+
+<header>
+<h1>Functions & Graphs (9 клас)</h1>
+<p>Побудова графіків функцій у GeoGebra</p>
+<div class="badge">Конкурс «Сучасний заклад освіти»</div>
+<div class="badge" style="background-color: honeydew;"> <a href="main.html" style="text-decoration: none; color: #2563eb;">На головну</a></div>
+</header>
+
+<div class="container">
+
+<div class="progress">
+<div class="bar" id="progressBar"></div>
+</div>
+
+<!-- Вкладки -->
+<div class="tabs">
+<button class="tab-btn active-tab" onclick="openTab('lesson',this)">Хід уроку</button>
+<button class="tab-btn" onclick="openTab('dictionary',this)">Словник</button>
+<button class="tab-btn" onclick="openTab('practice',this)">Практика</button>
+<button class="tab-btn" onclick="openTab('stem',this)">STEM-завдання</button>
+</div>
+
+<!-- ХІД УРОКУ -->
+<div id="lesson" class="tab-content">
+
+<div class="card">
+<h3>Мета уроку</h3>
+<ul>
+<li>Навчитися будувати графіки функцій у GeoGebra</li>
+<li>Закріпити знання про лінійну та квадратичну функції</li>
+<li>Навчитися аналізувати графіки</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Актуалізація знань</h3>
+<p>Що таке функція? Що таке графік функції?</p>
+<button onclick="showResult(this)">Показати результат</button>
+<div class="hidden result">
+Учні повторили означення функції та графіка.
+</div>
+</div>
+
+<div class="card">
+<h3>Вивчення нового матеріалу</h3>
+<p>Відкрити GeoGebra → вкладка «Графік» → ввести:</p>
+<div class="code-box">
+y = 2x + 1<br>
+y = x² - 4x + 3
+</div>
+<br>
+<a href="https://www.geogebra.org/classic#graphing" target="_blank">
+Перейти до GeoGebra
+</a>
+<button onclick="showResult(this)">Показати результат</button>
+<div class="hidden result">
+Учні навчилися будувати графіки лінійної та квадратичної функції.
+</div>
+</div>
+
+<div class="card">
+<h3>Підсумок уроку</h3>
+<button onclick="generateReflection()">Отримати підсумок</button>
+<div id="reflection" class="hidden"></div>
+</div>
+
+</div>
+
+<!-- СЛОВНИК -->
+<div id="dictionary" class="tab-content hidden">
+<div class="card">
+<h3>Mathematical Terms</h3>
+<table>
+<tr><th>Українською</th><th>English</th></tr>
+<tr onclick="speak('Graph of a function')">
+<td>Графік функції</td><td>Graph of a function</td>
+</tr>
+<tr onclick="speak('Linear function')">
+<td>Лінійна функція</td><td>Linear function</td>
+</tr>
+<tr onclick="speak('Quadratic function')">
+<td>Квадратична функція</td><td>Quadratic function</td>
+</tr>
+<tr onclick="speak('Parabola')">
+<td>Парабола</td><td>Parabola</td>
+</tr>
+<tr onclick="speak('Coefficient')">
+<td>Коефіцієнт</td><td>Coefficient</td>
+</tr>
+</table>
+<p>Натисніть на термін для прослуховування вимови 🔊</p>
+</div>
+</div>
+
+<!-- ПРАКТИКА -->
+<div id="practice" class="tab-content hidden">
+
+<div class="card">
+<h3>Завдання 1</h3>
+<p>Побудувати: y = −3x + 2</p>
+<button onclick="showAnswer(this,'Лінійна функція зі спадним графіком.')">
+Показати відповідь
+</button>
+</div>
+
+<div class="card">
+<h3>Завдання 2</h3>
+<p>Побудувати: y = x² + 2x − 3</p>
+<button onclick="showAnswer(this,'Парабола з вершиною (-1; -4).')">
+Показати відповідь
+</button>
+</div>
+
+<div class="card">
+<h3>Завдання 3</h3>
+<p>Порівняти: y=x² , y=x²+2 , y=(x+2)²</p>
+<button onclick="showAnswer(this,'Відбувається паралельне перенесення графіка.')">
+Показати відповідь
+</button>
+</div>
+
+</div>
+
+<!-- STEM-завдання -->
+<div id="stem" class="tab-content hidden">
+
+<div class="section">
+<h2>Інноваційність та STEM-інтеграція</h2>
+<ul>
+<li><b>Mathematics:</b> аналіз лінійних та квадратичних функцій</li>
+<li><b>English:</b> використання математичної термінології англійською</li>
+<li><b>IT:</b> GeoGebra + програмування власного міні-калькулятора</li>
+</ul>
+<button onclick="showResult(this)">Показати освітній результат</button>
+<div class="hidden">
+Учні формують математичну, цифрову та комунікативну компетентності.
+</div>
+</div>
+
+<div class="section">
+<h2>IT-завдання: mini-калькулятор</h2>
+<div class="grid">
+<div>
+<p>Введіть значення x:</p>
+<input type="number" id="xValue">
+<br>
+<button onclick="calculate()">Обчислити y = 2x + 1</button>
+<p id="calcResult"></p>
+</div>
+<div>
+<p>Аналіз коду:</p>
+<div class="code-box">
+function calculate(){<br>
+&nbsp;&nbsp;let x = document.getElementById("xValue").value;<br>
+&nbsp;&nbsp;let y = 2*x + 1;<br>
+&nbsp;&nbsp;document.getElementById("calcResult").innerHTML = "y = " + y;<br>
+}
+</div>
+</div>
+</div>
+<button onclick="showResult(this)">Компетентнісний результат</button>
+<div class="hidden">
+Учні застосовують математичну формулу в програмному коді.
+</div>
+</div>
+
+<div class="section">
+<h2>STEM-дослідження</h2>
+<p>Порівняти графіки:</p>
+<div class="code-box">
+y = x²<br>
+y = x² + 2<br>
+y = (x + 2)²
+</div>
+<button onclick="showResult(this)">Висновок</button>
+<div class="hidden">
+Відбувається паралельне перенесення графіка.
+</div>
+</div>
+
+<div class="section">
+<h2>English Integration</h2>
+<p>Key phrases:</p>
+<ul>
+<li>The graph of a linear function is a straight line.</li>
+<li>The parabola opens upwards if a > 0.</li>
+<li>Let's find the vertex of the parabola.</li>
+</ul>
+<button onclick="speakPhrase()">Прослухати вимову</button>
+</div>
+
+</div>
+
+</div>
+
+<script>
+let progress = 0;
+
+function showResult(btn){
+let result = btn.nextElementSibling;
+result.classList.toggle("hidden");
+updateProgress();
+}
+
+function showAnswer(button,text){
+let div = document.createElement("div");
+div.innerHTML = text;
+div.style.marginTop="10px";
+button.parentElement.appendChild(div);
+button.disabled=true;
+updateProgress();
+}
+
+function updateProgress(){
+progress += 10;
+if(progress>100) progress=100;
+document.getElementById("progressBar").style.width=progress+"%";
+}
+
+function toggleTheme(){
+document.body.classList.toggle("dark");
+}
+
+function openTab(id,btn){
+document.querySelectorAll(".tab-content").forEach(el=>el.classList.add("hidden"));
+document.getElementById(id).classList.remove("hidden");
+document.querySelectorAll(".tab-btn").forEach(el=>el.classList.remove("active-tab"));
+btn.classList.add("active-tab");
+}
+
+function generateReflection(){
+let messages=[
+"Сформовано STEM-компетентності.",
+"Розвинено логічне та алгоритмічне мислення.",
+"Інтеграція Math + English + IT реалізована успішно."
+];
+let r=Math.floor(Math.random()*messages.length);
+let block=document.getElementById("reflection");
+block.classList.remove("hidden");
+block.innerHTML=messages[r];
+updateProgress();
+}
+
+function calculate(){
+let x=document.getElementById("xValue").value;
+let y=2*x+1;
+document.getElementById("calcResult").innerHTML="y = "+y;
+updateProgress();
+}
+
+function speak(text){
+let msg=new SpeechSynthesisUtterance(text);
+msg.lang="en-US";
+speechSynthesis.speak(msg);
+}
+
+function speakPhrase(){
+let msg=new SpeechSynthesisUtterance("The graph of a linear function is a straight line.");
+msg.lang="en-US";
+speechSynthesis.speak(msg);
+}
+</script>
+
+</body>
+</html>

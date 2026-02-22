@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Корисні посилання | STEM</title>
+<style>
+:root{
+--bg:#f8fafc;
+--card:#ffffff;
+--text:#1f2937;
+--accent:#2563eb;
+--grad:linear-gradient(135deg,#2563eb,#7c3aed);
+}
+
+body.dark{
+--bg:#0f172a;
+--card:#1e293b;
+--text:#f1f5f9;
+--accent:#60a5fa;
+}
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:var(--bg);
+color:var(--text);
+transition:0.4s;
+}
+
+header{
+background:var(--grad);
+color:white;
+padding:40px 20px;
+text-align:center;
+}
+
+header h1{margin:0;font-size:32px;}
+
+.container{
+max-width:900px;
+margin:40px auto;
+padding:20px;
+}
+
+.card{
+background:var(--card);
+padding:20px;
+border-radius:18px;
+margin-bottom:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.card:hover{transform:translateY(-5px);}
+.card a{color:white; text-decoration:none; font-weight:bold;}
+
+.btn{
+display:inline-block;
+margin-top:10px;
+padding:10px 16px;
+background:var(--accent);
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+text-decoration:none;
+font-weight:bold;
+}
+
+button{
+position:fixed;
+top:15px;
+right:15px;
+background:var(--accent);
+border:none;
+color:white;
+padding:10px 16px;
+border-radius:10px;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<button onclick="toggleTheme()">🌙</button>
+
+<header>
+<h1>Корисні посилання для STEM та інтегрованих уроків</h1>
+</header>
+
+<div class="container">
+
+<div class="card">
+<h3>GeoGebra</h3>
+<p>Платформа для побудови графіків функцій, геометрії та статистики.</p>
+<a href="https://www.geogebra.org/" target="_blank" class="btn">Перейти</a>
+</div>
+
+<div class="card">
+<h3>Khan Academy</h3>
+<p>Онлайн-уроки з математики, науки та фінансової грамотності.</p>
+<a href="https://www.khanacademy.org/" target="_blank" class="btn">Перейти</a>
+</div>
+
+<div class="card">
+<h3>ChatGPT / AI Tools</h3>
+<p>Для промпт-інжинірингу та перевірки математичних та фінансових розрахунків.</p>
+<a href="https://chat.openai.com/" target="_blank" class="btn">Перейти</a>
+</div>
+
+<div class="card">
+<h3>Microsoft Excel</h3>
+<p>Створення таблиць, формул та автоматизація обчислень.</p>
+<a href="https://www.microsoft.com/en-us/microsoft-365/excel" target="_blank" class="btn">Перейти</a>
+</div>
+
+<div class="card">
+<h3>Google Sheets</h3>
+<p>Онлайн-таблиці для спільної роботи та автоматизованих розрахунків.</p>
+<a href="https://www.google.com/sheets/about/" target="_blank" class="btn">Перейти</a>
+</div>
+
+<div class="card">
+<h3>Повернутись на головну</h3>
+<a href="main.html" class="btn">Головна сторінка</a>
+</div>
+
+</div>
+
+<script>
+function toggleTheme(){
+document.body.classList.toggle("dark");
+}
+</script>
+
+</body>
+</html>

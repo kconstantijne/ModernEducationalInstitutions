@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STEM-урок | Finance & AI Literacy</title>
+
+<style>
+:root{
+--bg:#f8fafc;
+--card:#ffffff;
+--text:#0f172a;
+--accent:#2563eb;
+--grad:linear-gradient(135deg,#2563eb,#7c3aed);
+}
+
+body.dark{
+--bg:#0f172a;
+--card:#1e293b;
+--text:#f1f5f9;
+--accent:#60a5fa;
+}
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:var(--bg);
+color:var(--text);
+transition:0.4s;
+}
+
+header{
+background:var(--grad);
+color:white;
+padding:40px 20px;
+text-align:center;
+}
+
+header h1{
+margin:0;
+font-size:32px;
+}
+
+.badge{
+display:inline-block;
+padding:6px 12px;
+border-radius:20px;
+background:white;
+color:#2563eb;
+font-weight:bold;
+margin-top:10px;
+}
+
+.container{
+max-width:1100px;
+margin:40px auto;
+padding:20px;
+}
+
+.card, .section{
+background:var(--card);
+padding:20px;
+border-radius:18px;
+margin-bottom:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+transition:0.3s;
+}
+
+.card:hover, .section:hover{
+transform:translateY(-5px);
+}
+
+button{
+background:var(--accent);
+border:none;
+color:white;
+padding:10px 16px;
+border-radius:10px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{opacity:0.85;}
+
+.hidden{display:none;}
+
+.progress{
+height:10px;
+background:#cbd5e1;
+border-radius:8px;
+margin-bottom:25px;
+overflow:hidden;
+}
+
+.bar{
+height:100%;
+width:0%;
+background:var(--accent);
+transition:0.4s;
+}
+
+.tabs{
+display:flex;
+gap:10px;
+margin-bottom:20px;
+}
+.tab-btn{
+flex:1;
+}
+.active-tab{
+background:#22c55e !important;
+}
+
+.toggle-theme{
+position:fixed;
+top:15px;
+right:15px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+td,th{
+border:1px solid #ccc;
+padding:8px;
+}
+td:hover{
+background:rgba(79,70,229,0.1);
+cursor:pointer;
+}
+
+.code-box{
+background:#0f172a;
+color:#22d3ee;
+padding:15px;
+border-radius:10px;
+font-family:monospace;
+overflow:auto;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+</style>
+</head>
+
+<body>
+
+<button class="toggle-theme" onclick="toggleTheme()">🌙</button>
+
+<header>
+<h1>STEM-урок | Finance & AI Literacy (8 клас)</h1>
+<p>Розрахунок банківських відсотків та навички AI-перевірки</p>
+<div class="badge">Конкурс «Сучасний заклад освіти»</div>
+<div class="badge" style="background-color: honeydew;"> <a href="main.html" style="text-decoration: none; color: #2563eb;">На головну</a></div>
+</header>
+
+<div class="container">
+
+<div class="progress">
+<div class="bar" id="progressBar"></div>
+</div>
+
+<div class="tabs">
+<button class="tab-btn active-tab" onclick="openTab('lesson',this)">Хід уроку</button>
+<button class="tab-btn" onclick="openTab('dictionary',this)">Словник</button>
+<button class="tab-btn" onclick="openTab('practice',this)">Практика</button>
+<button class="tab-btn" onclick="openTab('stem',this)">STEM-завдання</button>
+</div>
+
+<!-- ХІД УРОКУ -->
+<div id="lesson" class="tab-content">
+
+<div class="card">
+<h3>Мета уроку</h3>
+<ul>
+<li><b>Math:</b> Навчитися розв'язувати задачі на простий відсоток (simple interest)</li>
+<li><b>English:</b> Засвоїти фінансову лексику та презентувати розв'язок англійською</li>
+<li><b>IT/AI:</b> Навчитися взаємодіяти з ШІ через промпт-інжиніринг для перевірки та створення задач</li>
+<li><b>Розвиваюча:</b> Критичне мислення при аналізі ШІ</li>
+<li><b>Виховна:</b> Фінансова грамотність та культура цифрового використання</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Організаційний момент</h3>
+<p>Вчитель: "Сьогодні ми фінансові аналітики. Ми будемо розраховувати прибутки англійською мовою та використовувати ШІ як нашого помічника."</p>
+<button onclick="showResult(this)">Показати результат</button>
+<div class="hidden result">
+Учні ознайомилися з темою та очікуваними результатами.
+</div>
+</div>
+
+<div class="card">
+<h3>Мовна розминка (Vocabulary Drill)</h3>
+<table>
+<tr><th>Термін</th><th>Значення</th></tr>
+<tr onclick="speak('Deposit')"><td>Deposit</td><td>To put money into a bank</td></tr>
+<tr onclick="speak('Annual')"><td>Annual</td><td>Something that happens once a year</td></tr>
+<tr onclick="speak('Interest rate')"><td>Interest rate</td><td>The percentage the bank pays you</td></tr>
+<tr onclick="speak('Balance')"><td>Balance</td><td>The total amount of money in the account</td></tr>
+</table>
+<p>Натисніть на термін для прослуховування вимови 🔊</p>
+</div>
+
+<div class="card">
+<h3>Математичний блок (Math Practice)</h3>
+<p>Задача: Марійка депозитує 5 000 грн під 10% річних.</p>
+<ol>
+<li>Визначити початкову суму: 5 000 грн.</li>
+<li>Визначити відсоткову ставку: 10%.</li>
+<li>Розрахунок 1: 5 000 × 0.1 = 500 (Відсотки)</li>
+<li>Розрахунок 2: 5 000 + 500 = 5 500 (Загальна сума)</li>
+</ol>
+<button onclick="showResult(this)">Показати результат</button>
+<div class="hidden result">
+Учні записали розв'язок та коментарі англійською.
+</div>
+</div>
+
+<div class="card">
+<h3>Закріплення та рефлексія</h3>
+<p>Обговорення: "Чи правильно ШІ розв'язав задачу?", "Чи зрозуміла була англійська?"</p>
+<button onclick="generateReflection()">Отримати підсумок</button>
+<div id="reflection" class="hidden"></div>
+</div>
+
+</div>
+
+<!-- СЛОВНИК -->
+<div id="dictionary" class="tab-content hidden">
+<div class="card">
+<h3>Financial Vocabulary</h3>
+<table>
+<tr><th>Українською</th><th>English</th></tr>
+<tr onclick="speak('Deposit')"><td>Депозит</td><td>Deposit</td></tr>
+<tr onclick="speak('Annual')"><td>Річний</td><td>Annual</td></tr>
+<tr onclick="speak('Interest rate')"><td>Відсоткова ставка</td><td>Interest rate</td></tr>
+<tr onclick="speak('Balance')"><td>Баланс</td><td>Balance</td></tr>
+</table>
+<p>Натисніть на термін для прослуховування вимови 🔊</p>
+</div>
+</div>
+
+<!-- ПРАКТИКА -->
+<div id="practice" class="tab-content hidden">
+<div class="card">
+<h3>Практичне завдання</h3>
+<p>Обчисліть відсотки для депозиту 8 000 грн під 12% річних.</p>
+<button onclick="showAnswer(this,'Відсотки = 960 грн, Загальна сума = 8 960 грн')">Показати відповідь</button>
+</div>
+
+<div class="card">
+<h3>Домашнє завдання</h3>
+<ul>
+<li>Вивчити 5 фінансових термінів англійською</li>
+<li>Використати ШІ, щоб розрахувати свій "уявний депозит" на 3 роки (compound interest) та записати результат англійською</li>
+</ul>
+</div>
+</div>
+
+<!-- STEM-завдання -->
+<div id="stem" class="tab-content hidden">
+
+<div class="section">
+<h2>AI Lab: Prompt-інжиніринг</h2>
+<p>Завдання 1 (Перевірка розрахунків):</p>
+<div class="code-box">
+"Act as a math tutor. Check my solution for this problem: Mariia deposited 5000 UAH at 10% annual interest. After 1 year, she has 5500 UAH. Show me the step-by-step logic."
+</div>
+
+<p>Завдання 2 (Створення задач):</p>
+<div class="code-box">
+"Create a similar problem in English, but change the sum to 12,000 UAH and the interest rate to 7%. Use the name Oleh."
+</div>
+
+<p>Завдання 3 (Критичний аналіз):</p>
+<div class="code-box">
+"Ask AI: What happens if interest is calculated monthly instead of annually? Compare the results."
+</div>
+
+<button onclick="showResult(this)">Показати результати STEM</button>
+<div class="hidden">
+Учні формують навички критичного мислення та роботи з AI.
+</div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+let progress = 0;
+
+function showResult(btn){
+let result = btn.nextElementSibling;
+if(result) result.classList.toggle("hidden");
+updateProgress();
+}
+
+function showAnswer(button,text){
+let div = document.createElement("div");
+div.innerHTML = text;
+div.style.marginTop="10px";
+button.parentElement.appendChild(div);
+button.disabled=true;
+updateProgress();
+}
+
+function updateProgress(){
+progress += 10;
+if(progress>100) progress=100;
+document.getElementById("progressBar").style.width=progress+"%";
+}
+
+function toggleTheme(){
+document.body.classList.toggle("dark");
+}
+
+function openTab(id,btn){
+document.querySelectorAll(".tab-content").forEach(el=>el.classList.add("hidden"));
+document.getElementById(id).classList.remove("hidden");
+document.querySelectorAll(".tab-btn").forEach(el=>el.classList.remove("active-tab"));
+btn.classList.add("active-tab");
+}
+
+function generateReflection(){
+let messages=[
+"Учні навчилися розраховувати відсотки та презентувати англійською.",
+"Формовано критичне мислення та AI literacy.",
+"Інтеграція Math + English + IT реалізована успішно."
+];
+let r=Math.floor(Math.random()*messages.length);
+let block=document.getElementById("reflection");
+block.classList.remove("hidden");
+block.innerHTML=messages[r];
+updateProgress();
+}
+
+function speak(text){
+let msg=new SpeechSynthesisUtterance(text);
+msg.lang="en-US";
+speechSynthesis.speak(msg);
+}
+</script>
+
+</body>
+</html>
