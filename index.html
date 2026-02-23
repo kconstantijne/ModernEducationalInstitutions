@@ -181,7 +181,9 @@ opacity:0.85;
   text-align:left;
   box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
-.stem-challenge h3{margin-top:0;}
+.stem-challenge h3{margin-top:0;
+display: block; text-align: center;
+}
 .stem-challenge button{
   margin-top:15px;
   padding:10px 16px;
@@ -255,6 +257,9 @@ opacity:0.85;
   font-size:18px;
   opacity:0.8;
   transition:0.3s;
+  margin-top: 30px;
+  margin-left: -20px;
+  margin-right: -20px;
 }
 .review-btn:hover{opacity:1;}
 
@@ -306,18 +311,18 @@ font-weight:500;
 </section>
 
 <section class="stem-challenge">
-  <h3>🧪 STEM Challenge</h3>
+  <h3 style="margin: 0 auto; display: block;">🧪 STEM Challenge</h3>
   <p id="challenge-text"></p>
-  <button onclick="newChallenge()">Отримати інше завдання</button>
+  <button onclick="newChallenge()" style="margin: 0 auto; display: block;">Отримати інше завдання</button>
 </section>
 
 <section class="reviews">
   <h3>💬 Відгуки студентів</h3>
-  <button class="review-btn" id="prev-review">◀️</button>
+  <button class="review-btn" id="prev-review"> ← </button>
   <div class="review-row" id="review-row">
     <div class="review-card">
       <p>"Завдання з фінансів та ШІ допомогли мені зрозуміти, як працюють відсотки на практиці!"</p>
-      <span>- Анна, 10 клас</span>
+      <span>- Анна, 9 клас</span>
     </div>
     <div class="review-card">
       <p>"Люблю, коли можна поєднати англійську і математику в одному уроці – це реально мотивує!"</p>
@@ -325,14 +330,14 @@ font-weight:500;
     </div>
     <div class="review-card">
       <p>"Практика з Excel/Google Sheets допомогла мені створювати власні фінансові таблиці."</p>
-      <span>- Софія, 11 клас</span>
+      <span>- Софія, 8 клас</span>
     </div>
     <div class="review-card">
       <p>"STEM-завдання мотивують робити все практично та цікаво!"</p>
-      <span>- Ігор, 10 клас</span>
+      <span>- Ігор, 8 клас</span>
     </div>
   </div>
-  <button class="review-btn" id="next-review">▶️</button>
+  <button class="review-btn" id="next-review"> → </button>
 </section>
 
 <footer>
