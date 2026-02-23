@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STEM-урок | Digital Budget Planner</title>
+
+<style>
+:root{
+--bg:#f8fafc;
+--card:#ffffff;
+--text:#0f172a;
+--accent:#2563eb;
+--grad:linear-gradient(135deg,#2563eb,#7c3aed);
+}
+
+body.dark{
+--bg:#0f172a;
+--card:#1e293b;
+--text:#f1f5f9;
+--accent:#60a5fa;
+}
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:var(--bg);
+color:var(--text);
+transition:0.4s;
+}
+
+header{
+background:var(--grad);
+color:white;
+padding:40px 20px;
+text-align:center;
+}
+
+header h1{margin:0;font-size:32px;}
+.badge{display:inline-block;padding:6px 12px;border-radius:20px;background:white;color:#16a34a;font-weight:bold;margin-top:10px;}
+
+.container{max-width:1100px;margin:40px auto;padding:20px;}
+.card, .section{background:var(--card);padding:20px;border-radius:18px;margin-bottom:25px;box-shadow:0 10px 25px rgba(0,0,0,0.08);transition:0.3s;}
+.card:hover, .section:hover{transform:translateY(-5px);}
+button{background:var(--accent);border:none;color:white;padding:10px 16px;border-radius:10px;cursor:pointer;margin-top:10px;}
+button:hover{opacity:0.85;}
+.hidden{display:none;}
+.progress{height:10px;background:#cbd5e1;border-radius:8px;margin-bottom:25px;overflow:hidden;}
+.bar{height:100%;width:0%;background:var(--accent);transition:0.4s;}
+.tabs{display:flex;gap:10px;margin-bottom:20px;}
+.tab-btn{flex:1;}
+.active-tab{background:#22c55e !important;}
+.toggle-theme{position:fixed;top:15px;right:15px;}
+table{width:100%;border-collapse:collapse;}
+td,th{border:1px solid #ccc;padding:8px;}
+td:hover{background:rgba(16,163,24,0.1);cursor:pointer;}
+.code-box{background:#0f172a;color:#22d3ee;padding:15px;border-radius:10px;font-family:monospace;overflow:auto;}
+</style>
+</head>
+
+<body>
+
+<button class="toggle-theme" onclick="toggleTheme()">🌙</button>
+
+<header>
+<h1>STEM-урок | Digital Budget Planner</h1>
+<p>Personal Finance + English + Spreadsheets + STEM</p>
+<div class="badge"><a href="menu.html" style="text-decoration:none;color:#16a34a;">До уроків</a></div>
+</header>
+
+<div class="container">
+
+<div class="progress">
+<div class="bar" id="progressBar"></div>
+</div>
+
+<div class="tabs">
+<button class="tab-btn active-tab" onclick="openTab('lesson',this)">Хід уроку</button>
+<button class="tab-btn" onclick="openTab('dictionary',this)">Словник</button>
+<button class="tab-btn" onclick="openTab('practice',this)">Практика</button>
+<button class="tab-btn" onclick="openTab('stem',this)">STEM-завдання</button>
+</div>
+
+<!-- ХІД УРОКУ -->
+<div id="lesson" class="tab-content">
+<div class="card">
+<h3>Мета уроку (Lesson Objectives)</h3>
+<ul>
+<li><b>English:</b> Вивчити терміни доходів та витрат, описувати фінансові операції.</li>
+<li><b>Math:</b> Розраховувати витрати, залишок бюджету та середні показники.</li>
+<li><b>Informatics:</b> Створити таблицю бюджету в Excel/Google Sheets із формулами.</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>I. Warm-up & English Focus (10 хв)</h3>
+<p>Ознайомлення з поняттями доходів та витрат. Учні читають приклад таблиці та визначають фінансові терміни.</p>
+<div class="code-box">
+Income: 12000 UAH
+Expenses:
+- Food: 3500
+- Transport: 1200
+- Entertainment: 1500
+- Other: 800
+Savings = ?
+</div>
+<button onclick="showResult(this)">Показати результат</button>
+<div class="hidden result">
+Учні знайшли терміни: Income, Expenses, Savings.
+</div>
+</div>
+
+<div class="card">
+<h3>II. Mathematical Analysis (10 хв)</h3>
+<p>Завдання з математики: обчисліть залишок бюджету та середній розподіл витрат.</p>
+<table>
+<tr><th>Category</th><th>Amount (UAH)</th></tr>
+<tr><td>Food</td><td>3500</td></tr>
+<tr><td>Transport</td><td>1200</td></tr>
+<tr><td>Entertainment</td><td>1500</td></tr>
+<tr><td>Other</td><td>800</td></tr>
+<tr><th>Total Expenses</th><td>7000</td></tr>
+<tr><th>Savings</th><td>5000</td></tr>
+</table>
+<button onclick="showResult(this)">Показати результат</button>
+<div class="hidden result">
+Обчислено залишок бюджету: 12000 - 7000 = 5000 UAH. Середня витрата: 1750 UAH.
+</div>
+</div>
+
+<div class="card">
+<h3>III. Informatics Lab: Spreadsheet Setup (15 хв)</h3>
+<p>Учні створюють таблицю для автоматизації підрахунків:</p>
+<div class="code-box">
+Columns:
+A: Category
+B: Amount
+C: Formula for total expenses: =SUM(B2:B5)
+D: Savings: =Income - Total
+</div>
+<button onclick="showResult(this)">Показати результат</button>
+<div class="hidden result">
+Учні створили автоматичний бюджет-калькулятор.
+</div>
+</div>
+
+</div>
+
+<!-- Словник -->
+<div id="dictionary" class="tab-content hidden">
+<div class="card">
+<h3>Financial & English Vocabulary</h3>
+<table>
+<tr><th>Українською</th><th>English</th></tr>
+<tr onclick="speak('Income')"><td>Дохід</td><td>Income</td></tr>
+<tr onclick="speak('Expenses')"><td>Витрати</td><td>Expenses</td></tr>
+<tr onclick="speak('Savings')"><td>Заощадження</td><td>Savings</td></tr>
+<tr onclick="speak('Budget')"><td>Бюджет</td><td>Budget</td></tr>
+<tr onclick="speak('Average')"><td>Середнє</td><td>Average</td></tr>
+</table>
+<p>Натисніть на термін для прослуховування вимови 🔊</p>
+</div>
+</div>
+
+<!-- Практика -->
+<div id="practice" class="tab-content hidden">
+<div class="card">
+<h3>Практичне завдання</h3>
+<p>Збільште витрати на харчування на 20% та порахуйте новий залишок бюджету.</p>
+<button onclick="showAnswer(this,'New total expenses: 7000 + 700 = 7700, Savings = 12000 - 7700 = 4300 UAH')">Показати відповідь</button>
+</div>
+
+<div class="card">
+<h3>Домашнє завдання</h3>
+<ul>
+<li>Вивчити фінансові терміни англійською</li>
+<li>Створити власний бюджет на наступний місяць у Excel або Google Sheets</li>
+</ul>
+</div>
+</div>
+
+<!-- STEM-завдання -->
+<div id="stem" class="tab-content hidden">
+<div class="section">
+<h2>STEM-завдання: Аналіз бюджету та автоматизація</h2>
+<p>1. Створіть формули для автоматичного підрахунку витрат та залишку бюджету:</p>
+<div class="code-box">
+Total Expenses = SUM(B2:B5)  
+Savings = Income - Total Expenses
+</div>
+<p>2. Додаткове завдання: Побудуйте графік у Excel/Google Sheets для візуалізації витрат за категоріями та оцініть, яка категорія займає найбільшу частку бюджету.</p>
+<p>3. Проведіть експеримент: змініть доходи або витрати та спостерігайте вплив на Savings і середню витрату на категорії.</p>
+<button onclick="showResult(this)">Показати результати STEM</button>
+<div class="hidden">
+Учні аналізують вплив змін у таблиці на фінансові показники та формують цифрову грамотність.
+</div>
+</div>
+</div>
+
+</div>
+
+<script>
+let progress=0;
+function showResult(btn){
+let result=btn.nextElementSibling;
+if(result) result.classList.toggle("hidden");
+progress+=10;if(progress>100)progress=100;
+document.getElementById("progressBar").style.width=progress+"%";
+}
+function showAnswer(button,text){
+let div=document.createElement("div");
+div.innerHTML=text;div.style.marginTop="10px";
+button.parentElement.appendChild(div);button.disabled=true;
+progress+=10;if(progress>100)progress=100;
+document.getElementById("progressBar").style.width=progress+"%";
+}
+function toggleTheme(){
+document.body.classList.toggle("dark");
+}
+function openTab(id,btn){
+document.querySelectorAll(".tab-content").forEach(el=>el.classList.add("hidden"));
+document.getElementById(id).classList.remove("hidden");
+document.querySelectorAll(".tab-btn").forEach(el=>el.classList.remove("active-tab"));
+btn.classList.add("active-tab");
+}
+function speak(text){
+let msg=new SpeechSynthesisUtterance(text);
+msg.lang="en-US";
+speechSynthesis.speak(msg);
+}
+</script>
+
+</body>
+</html>

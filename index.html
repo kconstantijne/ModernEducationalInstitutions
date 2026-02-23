@@ -3,125 +3,420 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STEM Lessons Hub | Сучасний заклад освіти</title>
+<title>STEM Education Platform</title>
+
 <style>
 :root{
---bg:#f3f4f6;
---card:#ffffff;
---text:#1f2937;
---accent:#2563eb;
---grad:linear-gradient(135deg,#2563eb,#7c3aed);
+--bg:#f5f5f7;
+--card:rgba(255,255,255,0.6);
+--text:#1d1d1f;
+--accent:#0071e3;
+--menu-bg:rgba(255,255,255,0.75);
 }
 
 body.dark{
---bg:#0f172a;
---card:#1e293b;
---text:#f1f5f9;
---accent:#60a5fa;
+--bg:#0f0f14;
+--card:rgba(30,30,35,0.6);
+--text:#f5f5f7;
+--accent:#4da3ff;
+--menu-bg:rgba(20,20,25,0.85);
 }
 
 body{
 margin:0;
-font-family:'Segoe UI',sans-serif;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
 background:var(--bg);
 color:var(--text);
+transition:background 0.4s ease,color 0.4s ease;
+overflow-x:hidden;
+display:flex;
+flex-direction:column;
+min-height:100vh;
+}
+
+/* Header */
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+font-weight:600;
+font-size:20px;
+}
+
+.logo{
+color:var(--accent);
+}
+
+/* Apple Button */
+.menu-btn{
+width:32px;
+height:22px;
+position:relative;
+cursor:pointer;
+z-index:2000;
+}
+
+.menu-btn span{
+position:absolute;
+width:100%;
+height:3px;
+background:var(--text);
+border-radius:3px;
 transition:0.4s;
 }
 
-header{
-background:var(--grad);
-color:white;
-padding:40px 20px;
-text-align:center;
+.menu-btn span:nth-child(1){top:0;}
+.menu-btn span:nth-child(2){top:9px;}
+.menu-btn span:nth-child(3){top:18px;}
+
+.menu-btn.active span:nth-child(1){
+transform:rotate(45deg);
+top:9px;
+}
+.menu-btn.active span:nth-child(2){
+opacity:0;
+}
+.menu-btn.active span:nth-child(3){
+transform:rotate(-45deg);
+top:9px;
 }
 
-header h1{margin:0;font-size:32px;}
-
-.container{
-max-width:900px;
-margin:40px auto;
-padding:20px;
+/* Fullscreen Glass Menu */
+.sidebar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:var(--menu-bg);
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:30px;
+transform:translateY(-100%);
+transition:transform 0.6s cubic-bezier(.16,1,.3,1);
+z-index:1500;
 }
 
-.card{
-background:var(--card);
-padding:20px;
-border-radius:18px;
-margin-bottom:25px;
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
+.sidebar.active{
+transform:translateY(0);
+}
+
+.sidebar a{
+font-size:28px;
+text-decoration:none;
+color:var(--text);
+font-weight:500;
 transition:0.3s;
 }
 
-.card:hover{transform:translateY(-5px);}
-.card a{color:white; text-decoration:none; font-weight:bold;}
-
-.btn{
-display:inline-block;
-margin-top:10px;
-padding:10px 16px;
-background:var(--accent);
-color:white;
-border:none;
-border-radius:10px;
-cursor:pointer;
-text-decoration:none;
-font-weight:bold;
+.sidebar a:hover{
+color:var(--accent);
+transform:scale(1.05);
 }
 
-button{
-position:fixed;
-top:15px;
-right:15px;
-background:var(--accent);
-border:none;
-color:white;
-padding:10px 16px;
-border-radius:10px;
+/* Dark Mode Toggle */
+.theme-toggle{
+margin-top:40px;
+padding:12px 28px;
+border-radius:30px;
+border:2px solid var(--accent);
+background:transparent;
+color:var(--accent);
+font-size:16px;
 cursor:pointer;
+transition:0.3s;
+}
+
+.theme-toggle:hover{
+background:var(--accent);
+color:white;
+}
+
+/* Hero */
+.hero{
+text-align:center;
+padding:120px 20px;
+flex: 1;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:20px;
+opacity:0.8;
+flex:1;
+}
+
+.button{
+display:inline-block;
+margin-top:30px;
+padding:14px 30px;
+border-radius:30px;
+background:var(--accent);
+color:white;
+text-decoration:none;
+font-weight:500;
+transition:0.3s;
+}
+
+.button:hover{
+opacity:0.85;
+}
+
+/* STEM Challenge */
+.stem-challenge{
+  max-width:900px;
+  margin:40px auto;
+  background:var(--card);
+  padding:25px;
+  border-radius:20px;
+  text-align:left;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+.stem-challenge h3{margin-top:0;}
+.stem-challenge button{
+  margin-top:15px;
+  padding:10px 16px;
+  border:none;
+  border-radius:10px;
+  background:var(--accent);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+.stem-challenge button:hover{opacity:0.85;}
+
+/* Reviews */
+.reviews{
+  max-width:900px;
+  margin:40px auto;
+  padding:0 20px;
+  position:relative;
+}
+
+.review-row{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  padding:10px 0;
+  scroll-behavior:smooth;
+}
+
+.review-row::-webkit-scrollbar{
+  height:8px;
+}
+
+.review-row::-webkit-scrollbar-thumb{
+  background:var(--accent);
+  border-radius:4px;
+}
+
+.review-row::-webkit-scrollbar-track{
+  background:rgba(0,0,0,0.05);
+}
+
+.review-card{
+  min-width:250px;
+  flex:0 0 auto;
+  background:var(--card);
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.05);
+}
+.review-card p{
+  margin:10px 0;
+  font-style:italic;
+}
+.review-card span{
+  font-weight:bold;
+  color:var(--accent);
+}
+
+/* Review Navigation Buttons */
+.review-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:var(--accent);
+  color:white;
+  border:none;
+  padding:10px;
+  border-radius:50%;
+  cursor:pointer;
+  z-index:10;
+  font-size:18px;
+  opacity:0.8;
+  transition:0.3s;
+}
+.review-btn:hover{opacity:1;}
+
+#prev-review{left:-20px;}
+#next-review{right:-20px;}
+
+/* Footer */
+footer{
+text-align:center;
+padding:40px 20px;
+background:var(--card);
+margin-top:auto;
+}
+
+footer a{
+margin:0 10px;
+color:var(--accent);
+text-decoration:none;
+font-weight:500;
 }
 </style>
 </head>
 <body>
 
-<button onclick="toggleTheme()">🌙</button>
-
 <header>
-<h1>STEM Lessons Hub</h1>
-<p>Сучасні інтегровані уроки для 8-9 класів</p>
+<div class="logo">STEM School</div>
+
+<div class="menu-btn" id="menuBtn">
+<span></span>
+<span></span>
+<span></span>
+</div>
 </header>
 
-<div class="container">
+<!-- Apple Fullscreen Menu -->
+<div class="sidebar" id="sidebar">
+<a href="resources.html">Корисні ресурси</a>
+<a href="menu.html">Меню уроків</a>
 
-<div class="card">
-<h2>Finance & AI Literacy (8 клас)</h2>
-<p>Розрахунок банківських відсотків + промпт-інжиніринг для перевірки задач.</p>
-<a href="lesson_one.html" target="_blank" class="btn">Відкрити урок</a>
+<button class="theme-toggle" id="themeToggle">
+🌙 Темна тема
+</button>
 </div>
 
-<div class="card">
-<h2>Functions & Graphs (9 клас)</h2>
-<p>Побудова графіків функцій у GeoGebra + аналіз їхніх властивостей.</p>
-<a href="lesson_two.html" target="_blank" class="btn">Відкрити урок</a>
-</div>
+<section class="hero">
+<h1>Сучасний STEM-простір</h1>
+<p>Інтерактивні інтегровані уроки: Math + English + IT</p>
+<a href="menu.html" class="button">Перейти до уроків</a>
+</section>
 
-<div class="card">
-<h2>Digital Recipe & Cost Analysis (Vinaigrette Salad)</h2>
-<p>Розрахунок вартості рецепту, створення таблиці та презентація результатів.</p>
-<a href="lesson_three.html" target="_blank" class="btn">Відкрити урок</a>
-</div>
+<section class="stem-challenge">
+  <h3>🧪 STEM Challenge</h3>
+  <p id="challenge-text"></p>
+  <button onclick="newChallenge()">Отримати інше завдання</button>
+</section>
 
-<div class="card">
-<h2>Корисні посилання</h2>
-<p>Посилання на онлайн-ресурси для навчання, програмування та STEM-проектів.</p>
-<a href="resources.html" target="_blank" class="btn">Перейти до ресурсів</a>
-</div>
+<section class="reviews">
+  <h3>💬 Відгуки студентів</h3>
+  <button class="review-btn" id="prev-review">◀️</button>
+  <div class="review-row" id="review-row">
+    <div class="review-card">
+      <p>"Завдання з фінансів та ШІ допомогли мені зрозуміти, як працюють відсотки на практиці!"</p>
+      <span>- Анна, 10 клас</span>
+    </div>
+    <div class="review-card">
+      <p>"Люблю, коли можна поєднати англійську і математику в одному уроці – це реально мотивує!"</p>
+      <span>- Дмитро, 9 клас</span>
+    </div>
+    <div class="review-card">
+      <p>"Практика з Excel/Google Sheets допомогла мені створювати власні фінансові таблиці."</p>
+      <span>- Софія, 11 клас</span>
+    </div>
+    <div class="review-card">
+      <p>"STEM-завдання мотивують робити все практично та цікаво!"</p>
+      <span>- Ігор, 10 клас</span>
+    </div>
+  </div>
+  <button class="review-btn" id="next-review">▶️</button>
+</section>
 
-</div>
+<footer>
+<p>© 2026 STEM School</p>
+<a href="https://www.instagram.com/gimnasium942024/" target="_blank">Instagram</a>
+<a href="https://school94zp.klasna.com/" target="_blank">Сайт школи</a>
+</footer>
 
 <script>
-function toggleTheme(){
-document.body.classList.toggle("dark");
+const menuBtn = document.getElementById("menuBtn");
+const sidebar = document.getElementById("sidebar");
+const themeToggle = document.getElementById("themeToggle");
+
+/* Menu Toggle */
+menuBtn.addEventListener("click", () => {
+menuBtn.classList.toggle("active");
+sidebar.classList.toggle("active");
+document.body.style.overflow = sidebar.classList.contains("active") ? "hidden" : "auto";
+});
+
+/* Theme Toggle */
+function updateThemeButton(){
+themeToggle.textContent = document.body.classList.contains("dark") ? "☀️ Світла тема" : "🌙 Темна тема";
 }
+
+themeToggle.addEventListener("click", () => {
+document.body.classList.toggle("dark");
+localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+updateThemeButton();
+});
+
+/* Load Saved Theme */
+if(localStorage.getItem("theme") === "dark"){
+document.body.classList.add("dark");
+}
+
+updateThemeButton();
+
+/* STEM Challenges */
+const challenges = [
+  "Розрахуйте середню вартість порції салату, якщо збільшити кількість інгредієнтів у 2 рази.",
+  "Створіть формули в Google Sheets для автоматичного підрахунку вартості страви.",
+  "Проаналізуйте, як зміна ціни інгредієнтів впливає на загальний бюджет рецепту.",
+  "Побудуйте графік залежності вартості від кількості порцій у Excel або Sheets.",
+  "Створіть таблицю для порівняння вартості декількох рецептів та визначте найдешевший варіант."
+];
+
+function newChallenge(){
+  const idx = Math.floor(Math.random()*challenges.length);
+  document.getElementById("challenge-text").textContent = challenges[idx];
+}
+
+newChallenge();
+
+/* Reviews AutoScroll */
+const reviewRow = document.getElementById("review-row");
+let autoScroll = true;
+let scrollPos = 0;
+
+function autoScrollReviews(){
+  if(autoScroll){
+    scrollPos += 1;
+    if(scrollPos >= reviewRow.scrollWidth - reviewRow.clientWidth){
+      scrollPos = 0;
+    }
+    reviewRow.scrollTo({left: scrollPos, behavior:'smooth'});
+  }
+  requestAnimationFrame(autoScrollReviews);
+}
+autoScrollReviews();
+
+/* Pause on Hover */
+reviewRow.addEventListener("mouseenter", ()=> autoScroll=false);
+reviewRow.addEventListener("mouseleave", ()=> autoScroll=true);
+
+/* Manual Scroll Buttons */
+document.getElementById("prev-review").addEventListener("click", ()=>{
+  autoScroll = false;
+  reviewRow.scrollBy({left:-260, behavior:'smooth'});
+});
+document.getElementById("next-review").addEventListener("click", ()=>{
+  autoScroll = false;
+  reviewRow.scrollBy({left:260, behavior:'smooth'});
+});
 </script>
 
 </body>
