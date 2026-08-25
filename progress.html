@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Мій прогрес | STEM School</title>
+<link rel="stylesheet" href="css/common.css">
+<script src="js/progress.js"></script><script src="js/theme.js"></script>
+</head>
+<body>
+<header class="site-header">
+<a class="logo" href="index.html">STEM School</a>
+<div class="header-actions">
+<button class="btn secondary small" data-theme-toggle>🌙 Темна тема</button>
+<a class="btn secondary small" href="menu.html">← Уроки</a>
+</div>
+</header>
+<main class="container section">
+<h1>📈 Мій прогрес</h1>
+<div class="kpi-grid">
+<div class="kpi"><span class="muted">Загальний прогрес</span><strong data-overall>0%</strong></div>
+<div class="kpi"><span class="muted">Виконано</span><strong data-completed>0</strong></div>
+<div class="kpi"><span class="muted">Завершено уроків</span><strong data-lessons>0</strong></div>
+<div class="kpi"><span class="muted">🔥 Серія днів</span><strong data-streak>0</strong></div>
+</div>
+
+<section class="section">
+<div class="card">
+<h2>Загальний прогрес</h2>
+<div class="progress-line"><span>Навчання</span><strong data-overall>0%</strong></div>
+<div class="progress-track"><div class="progress-fill" id="overallBar"></div></div>
+</div>
+</section>
+
+<section class="section">
+<h2 class="section-title">Уроки</h2>
+<div id="lessonStats" class="grid"></div>
+</section>
+
+<section class="section">
+<div class="card">
+<h2>Дані на цьому пристрої</h2>
+<p class="muted">Прогрес зберігається у localStorage. Щоб перенести його на інший пристрій, експортуйте JSON-файл та імпортуйте його там.</p>
+<div class="toolbar">
+<button class="btn" id="exportBtn">📥 Експортувати</button>
+<label class="btn secondary" for="importInput">📤 Імпортувати</label>
+<input id="importInput" type="file" accept="application/json" hidden>
+<button class="btn danger" id="resetBtn">🗑 Скинути прогрес</button>
+</div>
+</div>
+</section>
+</main>
+<footer><p>© 2026 STEM School</p></footer>
+<script>
+function render(){
+ const s=Progress.stats();
+ document.querySelectorAll("[data-overall]").forEach(e=>e.textContent=s.overall+"%");
+ document.querySelector("[data-completed]").textContent=s.completed;
+ document.querySelector("[data-lessons]").textContent=s.completedLessons;
+ document.querySelector("[data-streak]").textContent=s.streak;
+ document.getElementById("overallBar").style.width=s.overall+"%";
+ const box=document.getElementById("lessonStats");
+ box.innerHTML=Object.entries(Progress.LESSONS).map(([id,l])=>{
+   const p=Progress.lessonProgress(id), completed=Progress.load().lessons[id].completed.length;
+   return `<article class="card"><h3>${l.title}</h3>
+   <div class="progress-line"><span>${completed} / ${l.activities.length} активностей</span><strong>${p}%</strong></div>
+   <div class="progress-track"><div class="progress-fill" style="width:${p}%"></div></div>
+   <p><a class="btn secondary small" href="${id}.html">Відкрити урок →</a></p></article>`;
+ }).join("");
+}
+document.getElementById("exportBtn").onclick=Progress.exportData;
+document.getElementById("importInput").onchange=e=>e.target.files[0]&&Progress.importData(e.target.files[0]);
+document.getElementById("resetBtn").onclick=()=>{
+ if(confirm("Скинути весь локальний прогрес? Цю дію не можна скасувати.")){
+   Progress.save({version:1,lessons:Object.fromEntries(Object.keys(Progress.LESSONS).map(id=>[id,{completed:[],lastActivity:null}])),streak:0,lastActivityDate:null,totalActivities:0,lastLesson:null});
+   render();
+ }
+};
+render(); window.addEventListener("progresschange",render);
+</script>
+</body></html>
