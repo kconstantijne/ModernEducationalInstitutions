@@ -97,8 +97,7 @@
 * порівняння стану освітнього процесу до та після впровадження окремих цифрових рішень.
 
 Саме накопичений практичний досвід є одним із ключових ресурсів для подальшого розвитку проєкту.
-Наочність отриманих результатів:
-https://quickchart.io/chart?bkg=white&c=%7B%0A%20%20type%3A%20%27bar%27%2C%0A%20%20data%3A%20%7B%0A%20%20%20%20labels%3A%20%5B%0A%20%20%20%20%20%20%27Before%20implementation%27%2C%0A%20%20%20%20%20%20%27Initial%20implementation%27%2C%0A%20%20%20%20%20%20%27Active%20use%27%2C%0A%20%20%20%20%20%20%27Current%20stage%27%0A%20%20%20%20%5D%2C%0A%20%20%20%20datasets%3A%20%5B%7B%0A%20%20%20%20%20%20label%3A%20%27Student%20engagement%20(%25)%27%2C%0A%20%20%20%20%20%20data%3A%20%5B58%2C%2067%2C%2076%2C%2084%5D%0A%20%20%20%20%7D%2C%20%7B%0A%20%20%20%20%20%20label%3A%20%27Learning%20materials%20accessibility%20(%25)%27%2C%0A%20%20%20%20%20%20data%3A%20%5B61%2C%2072%2C%2083%2C%2091%5D%0A%20%20%20%20%7D%2C%20%7B%0A%20%20%20%20%20%20label%3A%20%27Teacher%20satisfaction%20(%25)%27%2C%0A%20%20%20%20%20%20data%3A%20%5B54%2C%2065%2C%2077%2C%2086%5D%0A%20%20%20%20%7D%5D%0A%20%20%7D%0A%7D
+![Результати впровадження](https://quickchart.io/chart?bkg=white&c=%7B%0A%20%20type%3A%20%27bar%27%2C%0A%20%20data%3A%20%7B%0A%20%20%20%20labels%3A%20%5B%27Before%20implementation%27%2C%27Initial%20implementation%27%2C%27Active%20use%27%2C%27Current%20stage%27%5D%2C%0A%20%20%20%20datasets%3A%20%5B%7Blabel%3A%27Student%20engagement%20(%25)%27%2Cdata%3A%5B58%2C67%2C76%2C84%5D%7D%2C%7Blabel%3A%27Learning%20materials%20accessibility%20(%25)%27%2Cdata%3A%5B61%2C72%2C83%2C91%5D%7D%2C%7Blabel%3A%27Teacher%20satisfaction%20(%25)%27%2Cdata%3A%5B54%2C65%2C77%2C86%5D%7D%5D%0A%20%20%7D%0A%7D)
 
 ---
 
