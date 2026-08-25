@@ -1,44 +1,71 @@
 <!doctype html>
-<html lang="uk"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>STEM School — сучасний STEM-простір</title>
-<link rel="stylesheet" href="css/common.css"><script src="js/progress.js"></script><script src="js/theme.js"></script>
-</head><body>
-<header class="site-header"><a class="logo" href="index.html">STEM School</a><div class="header-actions">
-<a class="btn secondary small" href="progress.html">📈 Мій прогрес</a><button class="btn secondary small" data-theme-toggle>🌙 Темна тема</button>
-</div></header>
-<main>
-<section class="hero container">
-<span class="badge">🧪 STEM Challenge</span>
-<h1>Сучасний STEM-простір</h1>
-<p>Інтерактивні інтегровані уроки: Math + English + IT. Виконуйте завдання, перевіряйте відповіді та відстежуйте свій прогрес.</p>
-<a class="button" href="menu.html">Перейти до уроків →</a>
-</section>
-<section class="container section"><div class="card">
-<div class="progress-line"><strong>Ваш загальний прогрес</strong><strong data-overall-progress>0%</strong></div>
-<div class="progress-track"><div class="progress-fill" data-progress-fill="lesson_one"></div></div>
-<p class="muted">Результати зберігаються локально у браузері.</p>
-<a class="btn secondary small" href="progress.html">Відкрити статистику</a>
-</div></section>
-<section class="container section"><div class="card stem-challenge">
-<span class="badge">🚀 Виклик дня</span><p id="challenge-text" class="challenge-text"></p>
-<button id="new-challenge" class="btn purple small">Інше завдання</button>
-</div></section>
-</main>
-<footer><p>© 2026 STEM School</p><a href="https://www.instagram.com/gimnasium942024/" target="_blank" rel="noopener">Instagram</a><a href="https://school94zp.klasna.com/" target="_blank" rel="noopener">Сайт школи</a></footer>
-<script src="js/app.js"></script><script>
-const challenges=[
-"Розрахуйте собівартість страви, якщо ціни на інгредієнти зростуть на 15%.",
-"Створіть модель бюджету класного заходу та автоматизуйте підрахунки.",
-"Перекладіть коротку інструкцію рецепту англійською.",
-"Побудуйте діаграму витрат у відсотках.",
-"Створіть міні-калькулятор вартості порцій.",
-"Проаналізуйте, як зміниться результат при збільшенні ціни на 10%.",
-"Розробіть алгоритм розрахунку знижки.",
-"Змоделюйте бюджет при зростанні цін на 8%.",
-"Порівняйте два варіанти витрат та обґрунтуйте вибір.",
-"Створіть таблицю обліку витрат і графік."
-];
-function newChallenge(){document.getElementById("challenge-text").textContent=challenges[Math.floor(Math.random()*challenges.length)]}
-document.getElementById("new-challenge").addEventListener("click",newChallenge);newChallenge();
-</script></body></html>
+<html lang="uk">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>STEM School — сучасний STEM-простір</title>
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/progress.js"></script>
+    <script src="js/theme.js"></script>
+</head>
+
+<body>
+    <header class="site-header"><a class="logo" href="index.html">STEM School</a>
+        <div class="header-actions">
+            <a class="btn secondary small" href="progress.html">📈 Мій прогрес</a><button class="btn secondary small"
+                data-theme-toggle>🌙 Темна тема</button>
+        </div>
+    </header>
+    <main>
+        <section class="hero container">
+            <span class="badge">🧪 STEM Challenge</span>
+            <h1>Сучасний STEM-простір</h1>
+            <p>Інтерактивні інтегровані уроки: Math + English + IT. Виконуйте завдання, перевіряйте відповіді та
+                відстежуйте свій прогрес.</p>
+            <a class="button" href="menu.html">Перейти до уроків →</a>
+        </section>
+        <section class="container section">
+            <div class="card">
+                <div class="progress-line"><strong>Ваш загальний прогрес</strong><strong
+                        data-overall-progress>0%</strong></div>
+                <div class="progress-track">
+                    <div class="progress-fill" data-progress-fill="lesson_one"></div>
+                </div>
+                <p class="muted">Результати зберігаються локально у браузері.</p>
+                <a class="btn secondary small" href="progress.html">Відкрити статистику</a>
+            </div>
+        </section>
+        <section class="container section">
+            <div class="card stem-challenge">
+                <span class="badge">🚀 Виклик дня</span>
+                <p id="challenge-text" class="challenge-text"></p>
+                <button id="new-challenge" class="btn purple small">Інше завдання</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>© 2026 STEM School</p><a href="https://www.instagram.com/gimnasium942024/" target="_blank"
+            rel="noopener">Instagram</a><a href="https://school94zp.klasna.com/" target="_blank" rel="noopener">Сайт
+            школи</a>
+    </footer>
+    <script src="js/app.js"></script>
+    <script>
+        const challenges = [
+            "Розрахуйте собівартість страви, якщо ціни на інгредієнти зростуть на 15%.",
+            "Створіть модель бюджету класного заходу та автоматизуйте підрахунки.",
+            "Перекладіть коротку інструкцію рецепту англійською.",
+            "Побудуйте діаграму витрат у відсотках.",
+            "Створіть міні-калькулятор вартості порцій.",
+            "Проаналізуйте, як зміниться результат при збільшенні ціни на 10%.",
+            "Розробіть алгоритм розрахунку знижки.",
+            "Змоделюйте бюджет при зростанні цін на 8%.",
+            "Порівняйте два варіанти витрат та обґрунтуйте вибір.",
+            "Створіть таблицю обліку витрат і графік."
+        ];
+        function newChallenge() { document.getElementById("challenge-text").textContent = challenges[Math.floor(Math.random() * challenges.length)] }
+        document.getElementById("new-challenge").addEventListener("click", newChallenge); newChallenge();
+    </script>
+</body>
+
+</html>

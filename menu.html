@@ -1,19 +1,53 @@
 <!doctype html>
-<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Меню уроків | STEM School</title><link rel="stylesheet" href="css/common.css"><script src="js/progress.js"></script><script src="js/theme.js"></script></head>
-<body><header class="site-header"><a class="logo" href="index.html">STEM School</a><div class="header-actions">
-<a class="btn secondary small" href="progress.html">📈 Мій прогрес</a><button class="btn secondary small" data-theme-toggle>🌙 Темна тема</button><a class="btn secondary small" href="index.html">← Головна</a></div></header>
-<main class="container section"><h1>Оберіть інтегрований урок</h1><p class="muted">У кожному уроці — інтерактивні завдання, перевірка відповідей та англійський словник з озвученням.</p>
-<div class="grid"><script>
-const lessons=[
-["lesson_one","📊 Finance & AI Literacy","Банківські відсотки + фінансова англійська + AI.","lesson_one.html"],
-["lesson_two","📈 Functions & Graphs","Функції, графіки та математичний словник.","lesson_two.html"],
-["lesson_three","🥗 Digital Recipe & Cost Analysis","Рецепти, собівартість і цифрові таблиці.","lesson_three.html"],
-["lesson_four","🧮 Digital Budget Planner","Бюджет, фінансові терміни та аналіз витрат.","lesson_four.html"]];
-document.write(lessons.map(([id,title,desc,url])=>`<article class="card lesson-card"><span class="badge">Урок</span><h2>${title}</h2><p class="muted">${desc}</p>
+<html lang="uk">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Меню уроків | STEM School</title>
+    <link rel="stylesheet" href="css/common.css">
+    <script src="js/progress.js"></script>
+    <script src="js/theme.js"></script>
+</head>
+
+<body>
+    <header class="site-header"><a class="logo" href="index.html">STEM School</a>
+        <div class="header-actions">
+            <a class="btn secondary small" href="progress.html">📈 Мій прогрес</a><button class="btn secondary small"
+                data-theme-toggle>🌙 Темна тема</button><a class="btn secondary small" href="index.html">← Головна</a>
+        </div>
+    </header>
+    <main class="container section">
+        <h1>Оберіть інтегрований урок</h1>
+        <p class="muted">У кожному уроці — інтерактивні завдання, перевірка відповідей та англійський словник з
+            озвученням.</p>
+        <div class="grid">
+            <script>
+                const lessons = [
+                    ["lesson_one", "📊 Finance & AI Literacy", "Банківські відсотки + фінансова англійська + AI.", "lesson_one.html"],
+                    ["lesson_two", "📈 Functions & Graphs", "Функції, графіки та математичний словник.", "lesson_two.html"],
+                    ["lesson_three", "🥗 Digital Recipe & Cost Analysis", "Рецепти, собівартість і цифрові таблиці.", "lesson_three.html"],
+                    ["lesson_four", "🧮 Digital Budget Planner", "Бюджет, фінансові терміни та аналіз витрат.", "lesson_four.html"]];
+                document.write(lessons.map(([id, title, desc, url]) => `<article class="card lesson-card"><span class="badge">Урок</span><h2>${title}</h2><p class="muted">${desc}</p>
 <div class="lesson-progress"><div class="progress-line"><span>Прогрес</span><strong data-lesson-progress="${id}">0%</strong></div><div class="progress-track"><div class="progress-fill" data-progress-fill="${id}"></div></div></div>
 <div class="card-actions"><a class="btn" href="${url}">Перейти →</a></div></article>`).join(""));
-</script>
-<article class="card lesson-card"><span class="badge">Статистика</span><h2>📈 Мій прогрес</h2><p class="muted">Загальний прогрес, streak, експорт та імпорт навчальних даних.</p><div class="card-actions"><a class="btn" href="progress.html">Відкрити →</a></div></article>
-<article class="card lesson-card"><span class="badge">Ресурси</span><h2>🌍 Корисні ресурси</h2><p class="muted">Освітні платформи, STEM-інструменти та цифрові сервіси.</p><div class="card-actions"><a class="btn" href="resources.html">Відкрити →</a></div></article>
-</div></main><footer><p>© 2026 STEM School</p></footer><script src="js/app.js"></script></body></html>
+            </script>
+            <article class="card lesson-card"><span class="badge">Статистика</span>
+                <h2>📈 Мій прогрес</h2>
+                <p class="muted">Загальний прогрес, streak, експорт та імпорт навчальних даних.</p>
+                <div class="card-actions"><a class="btn" href="progress.html">Відкрити →</a></div>
+            </article>
+            <article class="card lesson-card"><span class="badge">Ресурси</span>
+                <h2>🌍 Корисні ресурси</h2>
+                <p class="muted">Освітні платформи, STEM-інструменти та цифрові сервіси.</p>
+                <div class="card-actions"><a class="btn" href="resources.html">Відкрити →</a></div>
+            </article>
+        </div>
+    </main>
+    <footer>
+        <p>© 2026 STEM School</p>
+    </footer>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
